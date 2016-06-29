@@ -14,6 +14,9 @@
 		AE20DA7C1D23BE8200E90248 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE20DA7A1D23BE8200E90248 /* LaunchScreen.storyboard */; };
 		AE20DA871D23BE8200E90248 /* SwiftTest01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE20DA861D23BE8200E90248 /* SwiftTest01Tests.swift */; };
 		AE20DA921D23BE8200E90248 /* SwiftTest01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE20DA911D23BE8200E90248 /* SwiftTest01UITests.swift */; };
+		AE20DAA01D23D84B00E90248 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE20DA9F1D23D84B00E90248 /* WeatherService.swift */; };
+		AE20DAA21D23DBF500E90248 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE20DAA11D23DBF500E90248 /* Weather.swift */; };
+		AE20DAA41D2413B100E90248 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE20DAA31D2413B100E90248 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		AE20DA8D1D23BE8200E90248 /* SwiftTest01UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftTest01UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE20DA911D23BE8200E90248 /* SwiftTest01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTest01UITests.swift; sourceTree = "<group>"; };
 		AE20DA931D23BE8200E90248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE20DA9F1D23D84B00E90248 /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		AE20DAA11D23DBF500E90248 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		AE20DAA31D2413B100E90248 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,9 @@
 				AE20DA711D23BE8200E90248 /* AppDelegate.swift */,
 				AE20DA731D23BE8200E90248 /* ViewController.swift */,
 				AE20DA751D23BE8200E90248 /* Main.storyboard */,
+				AE20DA9F1D23D84B00E90248 /* WeatherService.swift */,
+				AE20DAA11D23DBF500E90248 /* Weather.swift */,
+				AE20DAA31D2413B100E90248 /* SwiftyJSON.swift */,
 				AE20DA781D23BE8200E90248 /* Assets.xcassets */,
 				AE20DA7A1D23BE8200E90248 /* LaunchScreen.storyboard */,
 				AE20DA7D1D23BE8200E90248 /* Info.plist */,
@@ -193,6 +202,7 @@
 				TargetAttributes = {
 					AE20DA6D1D23BE8200E90248 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = GY92HWGU2J;
 					};
 					AE20DA811D23BE8200E90248 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -256,7 +266,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE20DAA21D23DBF500E90248 /* Weather.swift in Sources */,
 				AE20DA741D23BE8200E90248 /* ViewController.swift in Sources */,
+				AE20DAA01D23D84B00E90248 /* WeatherService.swift in Sources */,
+				AE20DAA41D2413B100E90248 /* SwiftyJSON.swift in Sources */,
 				AE20DA721D23BE8200E90248 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +414,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SwiftTest01/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = huchka.SwiftTest01;
@@ -412,6 +426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SwiftTest01/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = huchka.SwiftTest01;
