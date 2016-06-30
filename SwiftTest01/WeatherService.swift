@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreLocation
+
 
 protocol WeatherServiceDelegate {
     func setWeather (weather: Weather)
@@ -16,13 +18,31 @@ protocol WeatherServiceDelegate {
 class WeatherService {
  
     var delegate: WeatherServiceDelegate?
+    let appid = "d227062a0b9e11030ead4f61667972f9"
     
-    func getWeather (city: String) {
+    func getWeatherForLocation (location: CLLocation) {
+        let lat = location.coordinate.latitude
+        let lon = location.coordinate.longitude
         
-        let cityEscaped = city.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())
-        let appid = "d227062a0b9e11030ead4f61667972f9"
+        // Put together a URL With lat and lon
+        let path = "http://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(appid)"
+        
+        getWeatherWithPath(path)
+    }
 
+    func getWeatherWithCity (city: String) {
+        let cityEscaped = city.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())
+        
         let path = "http://api.openweathermap.org/data/2.5/weather?q=\(cityEscaped!)&appid=\(appid)"
+        
+        getWeatherWithPath(path)
+    }
+    
+    
+    func getWeatherWithPath (path: String) {
+        
+
+        // let path = "http://api.openweathermap.org/data/2.5/weather?q=\(cityEscaped!)&appid=\(appid)"
         
         let url = NSURL(string: path)
         let session = NSURLSession.sharedSession()

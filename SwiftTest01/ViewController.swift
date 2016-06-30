@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import CoreLocation // 1 import CoreLocation
 
-class ViewController: UIViewController, WeatherServiceDelegate {
 
+class ViewController: UIViewController, WeatherServiceDelegate, CLLocationManagerDelegate {
+
+    let locationManager = CLLocationManager()
+    
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
@@ -36,10 +40,16 @@ class ViewController: UIViewController, WeatherServiceDelegate {
         let ok = UIAlertAction(title: "Ok",
                                style: UIAlertActionStyle.Default) { (action: UIAlertAction) -> Void in
                                 let textField = alert.textFields?[0]
-                                self.weatherService.getWeather((textField?.text)!)
+                                self.weatherService.getWeatherWithCity((textField?.text)!)
         }
         
         alert.addAction(ok)
+        
+        let location = UIAlertAction(title: "Use Location", style: UIAlertActionStyle.Default) { (action: UIAlertAction) -> Void in
+            self.getGPSLocation()
+        }
+        
+        alert.addAction(location)
         
         alert.addTextFieldWithConfigurationHandler { (textField: UITextField) -> Void in
             textField.placeholder = "City Name"
@@ -69,11 +79,41 @@ class ViewController: UIViewController, WeatherServiceDelegate {
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    func getGPSLocation () {
+        print("Starting location Manager")
+        locationManager.startUpdatingLocation()
+    }
+
+    // 6 Add delegate methods
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        // Get weather for location
+        print("Did update To Location")
+        print(newLocation)
+        locationManager.stopUpdatingLocation()
+    }
+    
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("Did update locations")
+        print(locations)
+        self.weatherService.getWeatherForLocation(locations[0])
+        locationManager.stopUpdatingLocation()
+    }
+    
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("location error \(error) \(error.userInfo)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         self.weatherService.delegate = self
+        
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestAlwaysAuthorization()
     }
 
     override func didReceiveMemoryWarning() {
