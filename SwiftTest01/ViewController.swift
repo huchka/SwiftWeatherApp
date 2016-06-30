@@ -13,6 +13,7 @@ class ViewController: UIViewController, WeatherServiceDelegate {
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var iconImage: UIImageView!
 
     let weatherService = WeatherService()
  
@@ -57,8 +58,10 @@ class ViewController: UIViewController, WeatherServiceDelegate {
         // print("****** set weather ")
         // print("City \(weather.cityName) temp: \(weather.temp) description: \(weather.description)")
         cityLabel.text = weather.cityName
-        tempLabel.text = "\(weather.temp)"
+        tempLabel.text = "\(weather.tempC)"
         descriptionLabel.text = weather.description
+        print("weather icon name : \(weather.icon)")
+        iconImage.image = UIImage(named: weather.icon)
         
     }
     

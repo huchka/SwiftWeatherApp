@@ -43,6 +43,9 @@
                                     <action selector="setCityTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qYF-Gr-TQC"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01d.png" translatesAutoresizingMaskIntoConstraints="NO" id="8r9-Xf-0mC">
+                                <rect key="frame" x="20" y="257" width="560" height="136"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -52,10 +55,13 @@
                             <constraint firstItem="Sgv-Wb-Pqa" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Ane-AS-z0A"/>
                             <constraint firstItem="gzu-Vj-KJ9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="HNd-KF-vnb"/>
                             <constraint firstItem="UGi-3v-ByN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KHp-nB-tlt"/>
+                            <constraint firstItem="8r9-Xf-0mC" firstAttribute="top" secondItem="Sgv-Wb-Pqa" secondAttribute="bottom" constant="8" id="KaF-yH-yfb"/>
                             <constraint firstItem="LL1-Hw-Enk" firstAttribute="top" secondItem="UGi-3v-ByN" secondAttribute="bottom" constant="24" id="QGD-xr-Rre"/>
+                            <constraint firstItem="8r9-Xf-0mC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="UiY-Wq-ZrM"/>
                             <constraint firstItem="Sgv-Wb-Pqa" firstAttribute="top" secondItem="gzu-Vj-KJ9" secondAttribute="bottom" constant="14" id="dqV-Br-nSi"/>
                             <constraint firstItem="LL1-Hw-Enk" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="fyh-Li-Y3q"/>
                             <constraint firstItem="LL1-Hw-Enk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="imu-V6-dMZ"/>
+                            <constraint firstItem="8r9-Xf-0mC" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="p1L-HG-LZu"/>
                             <constraint firstItem="UGi-3v-ByN" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="u2U-sW-OzF"/>
                             <constraint firstItem="gzu-Vj-KJ9" firstAttribute="top" secondItem="LL1-Hw-Enk" secondAttribute="bottom" constant="33" id="yNB-0L-fKc"/>
                         </constraints>
@@ -63,6 +69,7 @@
                     <connections>
                         <outlet property="cityLabel" destination="gzu-Vj-KJ9" id="rRT-ET-IBv"/>
                         <outlet property="descriptionLabel" destination="LL1-Hw-Enk" id="UCa-xd-Urt"/>
+                        <outlet property="iconImage" destination="8r9-Xf-0mC" id="OtK-8N-GiM"/>
                         <outlet property="tempLabel" destination="UGi-3v-ByN" id="SID-z1-1KI"/>
                     </connections>
                 </viewController>
@@ -71,4 +78,7 @@
             <point key="canvasLocation" x="423" y="334"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="01d.png" width="180" height="136"/>
+    </resources>
 </document>
