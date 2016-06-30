@@ -62,8 +62,13 @@ class ViewController: UIViewController, WeatherServiceDelegate, CLLocationManage
     // MARK: - Weather Service Delegate Methods
     
     func setWeather(weather: Weather) {
+        
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        formatter.maximumFractionDigits = 1
+        
         cityLabel.text = weather.cityName
-        tempLabel.text = "\(weather.tempC)"
+        tempLabel.text = "\(formatter.stringFromNumber(weather.tempC)!)"
         descriptionLabel.text = weather.description
         print("weather icon name : \(weather.icon)")
         iconImage.image = UIImage(named: weather.icon)

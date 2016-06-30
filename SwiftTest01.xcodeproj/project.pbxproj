@@ -583,6 +583,7 @@
 				AE20DA981D23BE8200E90248 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE20DA991D23BE8200E90248 /* Build configuration list for PBXNativeTarget "SwiftTest01Tests" */ = {
 			isa = XCConfigurationList;
@@ -591,6 +592,7 @@
 				AE20DA9B1D23BE8200E90248 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE20DA9C1D23BE8200E90248 /* Build configuration list for PBXNativeTarget "SwiftTest01UITests" */ = {
 			isa = XCConfigurationList;
@@ -599,6 +601,7 @@
 				AE20DA9E1D23BE8200E90248 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
