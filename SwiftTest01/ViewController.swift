@@ -35,10 +35,7 @@ class ViewController: UIViewController, WeatherServiceDelegate {
         
         let ok = UIAlertAction(title: "Ok",
                                style: UIAlertActionStyle.Default) { (action: UIAlertAction) -> Void in
-                                // print("OK")
                                 let textField = alert.textFields?[0]
-                                // print(textField?.text)
-                                self.cityLabel.text = textField?.text!
                                 self.weatherService.getWeather((textField?.text)!)
         }
         
@@ -52,17 +49,24 @@ class ViewController: UIViewController, WeatherServiceDelegate {
         
     }
     
-    // MARK: - Weather Service Delegate
+    // MARK: - Weather Service Delegate Methods
     
     func setWeather(weather: Weather) {
-        // print("****** set weather ")
-        // print("City \(weather.cityName) temp: \(weather.temp) description: \(weather.description)")
         cityLabel.text = weather.cityName
         tempLabel.text = "\(weather.tempC)"
         descriptionLabel.text = weather.description
         print("weather icon name : \(weather.icon)")
         iconImage.image = UIImage(named: weather.icon)
         
+    }
+    
+    func weatherErrorWithMessage(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+        
+        alert.addAction(ok)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

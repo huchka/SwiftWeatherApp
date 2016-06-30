@@ -10,6 +10,7 @@ import Foundation
 
 protocol WeatherServiceDelegate {
     func setWeather (weather: Weather)
+    func weatherErrorWithMessage (message: String)
 }
 
 class WeatherService {
@@ -25,40 +26,53 @@ class WeatherService {
         
         let url = NSURL(string: path)
         let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url!) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
-            // print(">>>>>>> \(data)")
-            let json = JSON(data: data!)
-            let lon = json["coord"]["lon"].double
-            let lat = json["coord"]["lat"].double
-            let temp = json["main"]["temp"].double
-            let name = json["name"].string
-            let description = json["weather"][0]["description"].string
-            let icon = json["weather"][0]["icon"].string
-            
-            let weather = Weather(cityName: name!, temp: temp!, description: description!, icon: icon!)
-            
-            if self.delegate != nil {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.delegate?.setWeather(weather)
-                })
+        let task = session.dataTaskWithURL(url!) {
+            (data: NSData?, response: NSURLResponse?, error: NSError?) in
+
+            if let httpResponse = response as? NSHTTPURLResponse {
+                print(httpResponse.statusCode)
             }
             
-            print("Latitute, Lontute: \(lon!), \(lat!),  temperature: \(temp!)")
-            print("name: \(name), description: \(description)")
+            let json = JSON(data: data!)
+            print(json)
+            
+            var status = 0
+            if let cod = json["cod"].int {
+                status = cod
+            } else if let cod = json["cod"].string {
+                status = Int(cod)!
+            }
+            
+            if status == 200 {
+                let temp = json["main"]["temp"].double
+                let name = json["name"].string
+                let description = json["weather"][0]["description"].string
+                let icon = json["weather"][0]["icon"].string
+                
+                let weather = Weather(cityName: name!, temp: temp!, description: description!, icon: icon!)
+                
+                if self.delegate != nil {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.delegate?.setWeather(weather)
+                    })
+                }
+            } else if status == 404 {
+                if self.delegate != nil {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.delegate?.weatherErrorWithMessage("City not found")
+                    })
+                }
+            } else {
+                if self.delegate != nil {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.delegate?.weatherErrorWithMessage("Unknown error occured on response")
+                    })
+                }
+            }
+            
         }
         
         task.resume()
-        
-        // print("Weather service city: \(city)")
-        
-        // request weather data ...
-        // wait ...
-        // process data
-        
-        // let weather = Weather(cityName: city, temp: 237.12, description: "A nice day")
-        
-        // delegate?.setWeather(weather)
-        
     }
     
 }
